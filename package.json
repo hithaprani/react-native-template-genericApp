@@ -1,8 +1,8 @@
 {
   "name": "react-native-template-genericApp",
-  "version": "0.0.5",
+  "version": "0.0.1",
   "description": "React Native Template",
-  "repository": "git@github.com:Esemesek/react-native-new-template.git",
+  "repository": "git@github.com:hithaprani/react-native-template-genericApp.git",
   "author": "Hithaprani <vakkantihithaprani@gmail.com>",
   "license": "MIT"
 }
