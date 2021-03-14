@@ -1,0 +1,28 @@
+import React from 'react';
+import { View, Text, SafeAreaView } from 'react-native';
+import { useAppData } from '../Providers/AppConfig';
+import { Button } from './common/Button';
+import DeviceInfo from 'react-native-device-info';
+import { landingScreenStyles } from './LandingScreen.styles';
+
+export const LandingScreen = (props) => {
+  const appData = useAppData();
+  const { strings } = appData;
+  const styles = landingScreenStyles(appData);
+
+  return (
+    <View style={styles.mainContainer}>
+      <SafeAreaView style={styles.subContainer}>
+        <Button
+          title={'Go to Login'}
+          onPress={() => {
+            props.navigation.navigate('Login');
+          }}
+        />
+        <Text style={styles.versionText}>
+          {strings.version.replace('{0}', DeviceInfo.getReadableVersion())}
+        </Text>
+      </SafeAreaView>
+    </View>
+  );
+};
