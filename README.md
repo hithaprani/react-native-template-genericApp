@@ -1,6 +1,6 @@
 # react-native-template-genericApp
 
-##Usage
+## Usage
 
 ``` npx react-native init MyTestApp --template @hithaprani/react-native-template-genericapp ```
 
