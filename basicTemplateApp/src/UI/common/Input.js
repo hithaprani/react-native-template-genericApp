@@ -1,3 +1,18 @@
+/** 
+ * Props:
+ * label: Input Label
+ * inputType: 'text' |'date' |'checkbox' |'radioButton' |'drop'
+ * value: input value
+ * onUpdate: (value)=>void  // can be string or {key:1, value:'option1'}
+ * options: used for checkbox|radioButton|drop 
+ *          ex: [{key:1, value:'option1'},{key:2, value:'option2'}]
+ * isPassword: boolean only if inputType is text
+ * textInputProps: only if inputType is text, extra textInput props
+ * dropProps: only if inputType is drop, extra Drop props
+ * dateType: 'date' | 'time' | 'datetime' only if inputType is date
+ * datePickerProps:  only if inputType is date, extra DateTimePickerModal props
+ * checkboxProps: only if inputType is checkbox, extra CheckBox props
+*/
 import React, { useState } from 'react';
 import { Text, TextInput, View, TouchableOpacity } from 'react-native';
 import { useAppData } from '../../Providers/AppConfig';

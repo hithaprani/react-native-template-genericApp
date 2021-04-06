@@ -1,8 +1,20 @@
+/**
+ * For Language add Strings-lan.json file in 
+ * ../Resources/Strings/ folder and do import as done for Engliosh language
+ * and make sure to use the keywords same see included json files version key is same
+ * 
+ * For app theme you can use same or different colors and images as 
+ * required by following instuctions in respective resouce files
+ * 
+ * To make it as change as the app opens you need to set value to 
+ * AsyncStorage('lanuage/appTheme') when user changes language/theme
+ */
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useContext, createContext, useEffect, useState } from 'react';
 import { darkColors, lightColors } from '../Resources/Colors';
 import { darkImages, lightImages } from '../Resources/Images';
 import EnglishStrings from '../Resources/Strings/Strings-en.json';
+import SpanishStrings from '../Resources/Strings/Strings-es.json';
 
 export const AppContext = createContext({
   strings: EnglishStrings,
@@ -15,6 +27,7 @@ export const AppContext = createContext({
 export const AppProvider = (props) => {
   const [language, setLanguage] = useState('Eng');
   const [appTheme, setAppTheme] = useState('light');
+
   const initialize = async () => {
     setLanguage((await AsyncStorage.getItem('language')) || 'Eng');
     setAppTheme((await AsyncStorage.getItem('appTheme')) || 'light');
@@ -25,9 +38,12 @@ export const AppProvider = (props) => {
   }, []);
 
   const strings = () => {
+    //To-do: if new language is added, add a new case similar to Eng/Spa
     switch (language) {
       case 'Eng':
         return EnglishStrings;
+      case 'Spa':
+        return SpanishStrings;
       default:
         return EnglishStrings;
     }
