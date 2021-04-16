@@ -1,4 +1,5 @@
 {
   "name": "basicTemplateApp",
-  "displayName": "basicTemplateApp"
+  "displayName": "basicTemplateApp",
+  "environment": "DEV"
 }

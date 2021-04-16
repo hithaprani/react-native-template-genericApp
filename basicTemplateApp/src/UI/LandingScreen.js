@@ -1,14 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
 import { useAppData } from '../Providers/AppConfig';
 import { Button } from './common/Button';
 import DeviceInfo from 'react-native-device-info';
 import { landingScreenStyles } from './LandingScreen.styles';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useUIElements } from '../Providers/UIProvider';
 
 export const LandingScreen = (props) => {
   const appData = useAppData();
+  const { setShowLoading } = useUIElements();
+
   const { strings } = appData;
   const styles = landingScreenStyles(appData);
+
+  useEffect(() => {
+    setShowLoading(true);
+    AsyncStorage.getItem('login')
+      .then((data) => {
+        if (data) {
+          props.navigation.reset({
+            index: 1,
+            routes: [{ name: 'Home' }],
+          });
+        }
+      })
+      .catch((error) => {})
+      .finally(() => {
+        setShowLoading(false);
+      });
+  }, []);
 
   return (
     <View style={styles.mainContainer}>

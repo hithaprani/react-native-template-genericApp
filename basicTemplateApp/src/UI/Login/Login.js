@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
+import { LoginAPI } from '../../API/LoginAPI';
 import { useAppData } from '../../Providers/AppConfig';
 import { useUIElements } from '../../Providers/UIProvider';
 import { Button } from '../common/Button';
@@ -35,13 +36,20 @@ export const Login = (props) => {
         <Button
           title={'Login'}
           onPress={() => {
-            props.navigation.reset({
-              index: 1,
-              routes: [{ name: 'Home' }],
-            });
+            LoginAPI(
+              {},
+              (data) => {
+                props.navigation.reset({
+                  index: 1,
+                  routes: [{ name: 'Home' }],
+                });
+              },
+              (error) => {
+                console.log(error);
+              },
+            );
             // navigate('Home');
           }}
-          mainContainer={styles.buttonContainerStyle}
         />
       </View>
     );

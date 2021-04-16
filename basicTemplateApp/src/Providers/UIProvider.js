@@ -5,7 +5,7 @@ import { uiProviderStyles } from './UIProvider.styles';
 
 export const UIContext = createContext({
   showLoading: false,
-  setShowLoading: () => {},
+  setShowLoading: (value, message = '') => {},
 });
 
 export const UIProvider = (props) => {

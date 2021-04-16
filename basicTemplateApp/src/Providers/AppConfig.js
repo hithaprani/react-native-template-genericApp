@@ -1,16 +1,17 @@
 /**
- * For Language add Strings-lan.json file in 
+ * For Language add Strings-lan.json file in
  * ../Resources/Strings/ folder and do import as done for Engliosh language
  * and make sure to use the keywords same see included json files version key is same
- * 
- * For app theme you can use same or different colors and images as 
+ *
+ * For app theme you can use same or different colors and images as
  * required by following instuctions in respective resouce files
- * 
- * To make it as change as the app opens you need to set value to 
+ *
+ * To make it as change as the app opens you need to set value to
  * AsyncStorage('lanuage/appTheme') when user changes language/theme
  */
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useContext, createContext, useEffect, useState } from 'react';
+import { AppConfigData } from '../Configurations/Configuration';
 import { darkColors, lightColors } from '../Resources/Colors';
 import { darkImages, lightImages } from '../Resources/Images';
 import EnglishStrings from '../Resources/Strings/Strings-en.json';
@@ -25,12 +26,16 @@ export const AppContext = createContext({
 });
 
 export const AppProvider = (props) => {
-  const [language, setLanguage] = useState('Eng');
-  const [appTheme, setAppTheme] = useState('light');
+  const [language, setLanguage] = useState(AppConfigData.defaultLanguage);
+  const [appTheme, setAppTheme] = useState(AppConfigData.defaultTheme);
 
   const initialize = async () => {
-    setLanguage((await AsyncStorage.getItem('language')) || 'Eng');
-    setAppTheme((await AsyncStorage.getItem('appTheme')) || 'light');
+    setLanguage(
+      (await AsyncStorage.getItem('language')) || AppConfigData.defaultLanguage,
+    );
+    setAppTheme(
+      (await AsyncStorage.getItem('appTheme')) || AppConfigData.defaultTheme,
+    );
   };
 
   useEffect(() => {

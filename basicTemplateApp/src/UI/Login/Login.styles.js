@@ -24,6 +24,7 @@ export const loginStyles = (appData) => {
     inputMainContainer: {
       height: 44,
       justifyContent: 'flex-end',
+      marginBottom: 20,
     },
   });
 };
